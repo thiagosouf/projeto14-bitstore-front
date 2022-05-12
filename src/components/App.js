@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState} from "react";
+import GlobalStyles from "./../components/GlobalStyles";
 
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
@@ -11,6 +12,7 @@ export default function App(){
     return(
         <UserContext.Provider value={{ user, setUser }}>
             <BrowserRouter>
+                <GlobalStyles />
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<LoginPage />} />
