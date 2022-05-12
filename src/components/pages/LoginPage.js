@@ -4,7 +4,7 @@ import axios from 'axios';
 import styled from "styled-components"
 
 import UserContext from '../../contexts/UserContext';
-
+ 
 export default function SignUpPage() {
     const navigate = useNavigate();
     const [nome, setNome] = useState('');
@@ -26,15 +26,19 @@ export default function SignUpPage() {
         const requisicao = axios.post('http://localhost:5000/login', {
             email: emaillogin,
             password: passwordlogin
-        });
+        }); 
+        
         
 
         requisicao.then(res => {
-            // localStorage.setItem('token', res.data.token);
             const { token, name } = res.data;
+            console.log(res.data);
             setUser({ token, name });
+            const dados = JSON.stringify({ token});
+            localStorage.setItem('usuarioLocal', JSON.stringify(dados));
+            
             alert('Login realizado com sucesso!');
-            navigate('/');
+            navigate('/checkout');
         }
         ).catch(err => {
             alert('Erro ao realizar o login');
@@ -56,7 +60,7 @@ export default function SignUpPage() {
         });
         requisicao.then(res => {
             alert('Cadastro realizado com sucesso');
-            navigate('/');
+            navigate('/login');
         });
 
         requisicao.catch(err => {
