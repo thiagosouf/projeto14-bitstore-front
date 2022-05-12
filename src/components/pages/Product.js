@@ -19,14 +19,6 @@ export default function Product() {
     });
   }, []);
 
-
-
-
-
-
-
-
-
   return (
     <>
       <Main>
