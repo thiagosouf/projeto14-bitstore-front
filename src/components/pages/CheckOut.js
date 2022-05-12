@@ -13,6 +13,8 @@ export default function CheckOut(){
     const [email, setEmail] = useState('');
     const [endereco, setEndereco] = useState('');
 
+    console.log(localStorage.getItem('token'));
+
 
     useEffect(() => {
         console.log("user do front =");

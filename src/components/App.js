@@ -21,7 +21,7 @@ export default function App(){
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/checkout" element={<CheckOut />} />
                     <Route path="/address" element={<AddressPage />} />
-                    <Route path="/product/:id" element={<Product />} />
+                    {/* <Route path="/product/:id" element={<Product />} /> */}
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider>
