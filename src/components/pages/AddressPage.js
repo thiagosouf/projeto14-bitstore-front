@@ -16,6 +16,7 @@ export default function AddressPage() {
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
     const {user} = useContext(UserContext);
+    console.log(user)
 
 
     const handleSubmit = (e) => {
@@ -30,7 +31,7 @@ export default function AddressPage() {
             estado
         }, {
             headers: {
-                Authorization: `Bearer ${user.token}`
+                Authorization: `${user.token}`
             }
         });
         requisicao.then(res => {
@@ -59,33 +60,6 @@ export default function AddressPage() {
         </FormCadastro>
     )
 }
-
-
-
-
-
-// return(
-//     <>
-//     {selecionarEndereco ?
-//         <FormCadastro>
-//             <h1>ENDERECO DE ENTREGA</h1>
-//             <Formulario onSubmit={cadastrarEndereco}>
-        
-//                 <input type="number" placeholder="CEP" value={cep} onChange={(e) => setCEP(e.target.value)} />
-//                 <input type="text" placeholder="Endereço (Rua, Avenida ...)" value={endereco} onChange={(e) => setEndereco(e.target.value)} />
-//                 <input type="number" placeholder="Numero" value={numero} onChange={(e) => setNumero(e.target.value)} />
-//                 <input type="text" placeholder="Complemento" value={complemento} onChange={(e) => setComplemento(e.target.value)} />
-//                 <input type="text" placeholder="Bairro" value={bairro} onChange={(e) => setBairro(e.target.value)} />
-//                 <input type="text" placeholder="Cidade" value={cidade} onChange={(e) => setCidade(e.target.value)} />
-//                 <input type="text" placeholder="Estado" value={estado} onChange={(e) => setEstado(e.target.value)} />
-//                 <button type="submit">Salvar</button>
-//             </Formulario>
-//         </FormCadastro>
-//         :
-//         <FormCadastro onClick={() => setSelecionarEndereco(true)}><h1>CADASTRAR ENDERECO DE ENTREGA</h1></FormCadastro>
-//         }
-//     </>
-//     )}
 
 
 

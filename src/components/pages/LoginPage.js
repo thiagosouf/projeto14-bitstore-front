@@ -17,13 +17,13 @@ export default function SignUpPage() {
     const [selecionarLogin, setSelecionarLogin] = useState(false);
     const [selecionarCadastro, setSelecionarCadastro] = useState(false);
 
-    const {setUser} = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
 
     function login(event){
         event.preventDefault();
         
         
-        const requisicao = axios.post('http://localhost:5000/login', {
+        const requisicao = axios.post('http://localhost:5001/login', {
             email: emaillogin,
             password: passwordlogin
         }); 
@@ -69,7 +69,6 @@ export default function SignUpPage() {
         });
     }
         
-
 
 
 

@@ -2,25 +2,25 @@ import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom"
 import axios from "axios";
 import { useState } from "react";
+import styled from "styled-components"
 
 import UserContext from '../../contexts/UserContext';
 
 export default function CheckOut(){
     const {user} = useContext(UserContext);
-    const {address} = useContext(UserContext);
+    const { address, setAddress } = useContext(UserContext);
     
 
     const [email, setEmail] = useState('');
-    const [endereco, setEndereco] = useState('');
 
-    console.log(localStorage.getItem('token'));
-
+    const tkn = (localStorage.getItem('token'));
+    console.log(tkn)
 
     useEffect(() => {
-        console.log("user do front =");
+        console.log("user do context =");
         console.log(user)
         if(user){
-            const requisicao = axios.get('http://localhost:5000/signin', {
+            const requisicao = axios.get('http://localhost:5001/signin', {
                 headers: {
                     Authorization: `${user.token}`
                     } 
@@ -36,50 +36,77 @@ export default function CheckOut(){
     }, [user]);
 
     useEffect(() => {
-        console.log(address)
-        if(address){
-            const requisicao = axios.get('http://localhost:5000/address', {
+        
+            const requisicao = axios.get('http://localhost:5001/address', {
                 headers: {
-                    Authorization: `Bearer ${user.token}`
+                    Authorization: `${user.token}`
                     }
                     });
             requisicao.then(res => {
                 console.log(res.data);
-                setEndereco((res.data.endereco));
+                setAddress((res.data.endereco));
             }
             ).catch(err => {
                 console.log(err);
             }
-            )}
-    }, [address]);
+            )
+    }, []);
 
 
 
     return(
-    // <TeladeCheckout> 
-    //             <Topo>
-                    (user) ? (<>
+    <TeladeCheckout> 
+                <Topo>
+                    {(user) ? <>
                             <h1>Olá, {user.name}!</h1>
-                            <h1>Seu email: {email}</h1>
-                            {(address) ? (<>TEM ENDEREÇo</>) : (<Link to="/address"><p>Cadastre seu endereço</p></Link>)
-}
-
-                            
-                        </>)
+                            <h1>Seu email: {email}</h1>                            
+                        </>
                         :
-                        <Link to="/login"><p>Faça Login ou crie seu Cadastro</p></Link>
-                /* </Topo>
-                <Produtos>
+                        <Link to="/login"><p>Faça Login ou crie seu Cadastro</p></Link>}
+                </Topo>
+                {/* <Produtos>
 
-                </Produtos>
+                </Produtos> */}
                 <Entrega>
-                
+                {(address) ? 
+                            
+                            (<>Endereço de Entrega: {address}</>) 
+                            
+                            
+                            : (<Link to="/address"><p>Cadastre seu endereço</p></Link>)}
                 </Entrega>
-                <Frete></Frete>
+                {/* <Frete></Frete>
                 <Cupom></Cupom>
-                <Valor></Valor>
+                <Valor></Valor> */}
 
                 
-            </TeladeCheckout> */
+            </TeladeCheckout>
     )
 }
+
+const TeladeCheckout = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
+const Topo = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
+
+// const Produtos = styled.div``
+
+const Entrega = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    `
+
+// const Frete = styled.div``
+
+// const Cupom = styled.div``
+
+// const Valor = styled.div``
