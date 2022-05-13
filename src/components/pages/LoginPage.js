@@ -56,7 +56,6 @@ export default function SignUpPage() {
         });
         requisicao.then(res => {
             alert('Cadastro realizado com sucesso');
-            navigate('/');
         });
 
         requisicao.catch(err => {

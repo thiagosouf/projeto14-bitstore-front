@@ -4,6 +4,7 @@ import axios from "axios";
 import styled from "styled-components";
 
 import UserContext from "../../contexts/UserContext";
+import CreateProduct from "../utilities/CreateProduct";
 
 export default function HomePage() {
   const { user } = useContext(UserContext);
@@ -13,26 +14,23 @@ export default function HomePage() {
   useEffect(() => {
     const promise = axios.get("http://localhost:5000/products");
     promise.then((response) => {
+     console.log(response.data);
       setProducts(response.data);
     });
   }, []);
-  function goToProduct(name) {}
+
+  console.log(products);
+
+
   if (products.length > 0) {
     return (
       <>
+      <Link to="/login">ir para login</Link>
         <Main>
           <ul>
-            {products.map((item, index) => {
-              return (
-                <Link to={`/product/${item._id}`}>
-                  <li key={index}>
-                    <h1>{item.name}</h1>
-                    <h2>{item.description}</h2>
-                    <h2>{item.price}</h2>
-                  </li>
-                </Link>
-              );
-            })}
+            {products.map((item, index) => (
+             <CreateProduct item={item} index={index}/>
+            ))}
           </ul>
         </Main>
       </>
