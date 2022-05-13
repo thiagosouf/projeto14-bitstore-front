@@ -65,6 +65,7 @@ export default function CheckOut(){
                         <Link to="/login"><p>Faça Login ou crie seu Cadastro</p></Link>}
                 </Topo>
                 <Titulo><p>CHECKOUT</p></Titulo>
+                <hr  width="50%"></hr>
                 {/* <Produtos>
 
                 </Produtos> */}
@@ -73,13 +74,13 @@ export default function CheckOut(){
                             
                             (<Entrega>
                                 
-                                <p>cep: {address.cep}</p>
-                                <p>endereco: {address.endereco}</p>
-                                <p>numero: {address.numero}</p>
-                                <p>complemento: {address.complemento}</p>
-                                <p>bairro: {address.bairro}</p>
-                                <p>cidade: {address.cidade}</p>
-                                <p>estado: {address.estado}</p>
+                                <Info>Cep: <div>{address.cep}</div></Info>
+                                <Info>Endereco: <div>{address.endereco}</div></Info>
+                                <Info>Numero: <div>{address.numero}</div></Info>
+                                <Info>Complemento: <div>{address.complemento}</div></Info>
+                                <Info>Bairro: <div>{address.bairro}</div></Info>
+                                <Info>Cidade: <div>{address.cidade}</div></Info>
+                                <Info>Estado: <div>{address.estado}</div></Info>
                             </Entrega>
                             )                            
                 
@@ -128,6 +129,32 @@ const Entrega = styled.div`
         margin: 5px;
     }
     `
+const Info = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 5px;
+    width: 95%;
+    height: 30px;
+   
+    
+    
+    div{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        background-color: #dcdcdc;
+        border: 1px solid black;
+        padding-left: 5px;
+        margin: 5px;
+        width: 100%;
+        height: 30px;
+        }
+        `
+    
+
 const Titulo = styled.div`
     display: flex;
     flex-direction: column;
