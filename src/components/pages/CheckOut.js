@@ -20,7 +20,7 @@ export default function CheckOut(){
         console.log("user do context =");
         console.log(user)
         if(user){
-            const requisicao = axios.get('http://localhost:5001/signin', {
+            const requisicao = axios.get('http://localhost:5000/signin', {
                 headers: {
                     Authorization: `${user.token}`
                     } 
@@ -37,14 +37,14 @@ export default function CheckOut(){
 
     useEffect(() => {
         
-            const requisicao = axios.get('http://localhost:5001/address', {
+            const requisicao = axios.get('http://localhost:5000/address', {
                 headers: {
                     Authorization: `${user.token}`
                     }
                     });
             requisicao.then(res => {
                 console.log(res.data);
-                setAddress((res.data.endereco));
+                setAddress((res.data));
             }
             ).catch(err => {
                 console.log(err);
@@ -64,17 +64,29 @@ export default function CheckOut(){
                         :
                         <Link to="/login"><p>Faça Login ou crie seu Cadastro</p></Link>}
                 </Topo>
+                <Titulo><p>CHECKOUT</p></Titulo>
                 {/* <Produtos>
 
                 </Produtos> */}
-                <Entrega>
+                <Titulo>Endereço de entrega</Titulo>
                 {(address) ? 
                             
-                            (<>Endereço de Entrega: {address}</>) 
+                            (<Entrega>
+                                
+                                <p>cep: {address.cep}</p>
+                                <p>endereco: {address.endereco}</p>
+                                <p>numero: {address.numero}</p>
+                                <p>complemento: {address.complemento}</p>
+                                <p>bairro: {address.bairro}</p>
+                                <p>cidade: {address.cidade}</p>
+                                <p>estado: {address.estado}</p>
+                            </Entrega>
+                            )                            
+                
                             
                             
                             : (<Link to="/address"><p>Cadastre seu endereço</p></Link>)}
-                </Entrega>
+                
                 {/* <Frete></Frete>
                 <Cupom></Cupom>
                 <Valor></Valor> */}
@@ -89,12 +101,17 @@ const TeladeCheckout = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100vw;
+    background-color: antiquewhite;
 `
 const Topo = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
+    width: 100%;
+    margin: 30px;
+    padding-right: 30px;
 `
 
 // const Produtos = styled.div``
@@ -102,8 +119,23 @@ const Topo = styled.div`
 const Entrega = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    margin: 10px;
+    border: 1px solid black;
+    font-size: 20px;
+    width: 80%;
+    p{
+        margin: 5px;
+    }
     `
+const Titulo = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: 700;`
 
 // const Frete = styled.div``
 

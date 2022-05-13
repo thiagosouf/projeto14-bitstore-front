@@ -23,7 +23,7 @@ export default function SignUpPage() {
         event.preventDefault();
         
         
-        const requisicao = axios.post('http://localhost:5001/login', {
+        const requisicao = axios.post('http://localhost:5000/login', {
             email: emaillogin,
             password: passwordlogin
         }); 
