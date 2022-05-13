@@ -60,7 +60,9 @@ export default function SignUpPage() {
         });
         requisicao.then(res => {
             alert('Cadastro realizado com sucesso');
+
             navigate('/login');
+
         });
 
         requisicao.catch(err => {
