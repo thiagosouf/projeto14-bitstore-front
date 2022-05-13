@@ -17,7 +17,7 @@ export default function SignUpPage() {
     const [selecionarLogin, setSelecionarLogin] = useState(false);
     const [selecionarCadastro, setSelecionarCadastro] = useState(false);
 
-    const {setUser} = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
 
     function login(event){
         event.preventDefault();
@@ -71,7 +71,6 @@ export default function SignUpPage() {
         });
     }
         
-
 
 
 
