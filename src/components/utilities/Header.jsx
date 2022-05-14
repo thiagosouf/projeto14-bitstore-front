@@ -2,7 +2,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useContext } from "react";
 
-import UserContext from "../../contexts/UserContext";
+
+import { UserContext } from "../../contexts/UserContext";
+
+
+
 
 import logo from "../../assets/logo.png";
 import { GoThreeBars } from "react-icons/go";
@@ -10,19 +14,25 @@ import { FaShoppingCart } from "react-icons/fa";
 import { MdAccountCircle } from "react-icons/md";
 
 export default function HeaderCreator() {
-  const { user } = useContext(UserContext);
+
+  const user = localStorage.getItem("user");
+
+
+
   console.log(user);
 
   if (user) {
     return (
       <Header>
         <GoThreeBars />
-        <img src={logo} alt="" />
+        <Link to={"/"}>
+          <img src={logo} alt="" />
+        </Link>
+
         <div className="options">
           <Link to={"/cart"}>
-                <FaShoppingCart/>
+            <FaShoppingCart />
           </Link>
-   
         </div>
       </Header>
     );
@@ -30,7 +40,11 @@ export default function HeaderCreator() {
     return (
       <Header>
         <GoThreeBars />
-        <img src={logo} alt="" />
+
+        <Link to={"/"}>
+          <img src={logo} alt="" />
+        </Link>
+
         <div className="options">
           <Link to={"/login"}>
             <MdAccountCircle />
@@ -71,7 +85,9 @@ const Header = styled.header`
     align-items: center;
     text-align: center;
     line-height: 25px;
-    font-weight: 700;
+
+    font-weight: 400;
+
     p {
       padding-left: 3px;
     }

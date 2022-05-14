@@ -4,7 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import styled from "styled-components"
 
-import UserContext from '../../contexts/UserContext';
+import {UserContext} from '../../contexts/UserContext';
 
 export default function CheckOut() {
     const { user } = useContext(UserContext);
@@ -16,7 +16,8 @@ export default function CheckOut() {
     const [cupomValue, setCupomValue] = useState(true);
 
 
-    const tkn = (localStorage.getItem('token'));
+    const userlocal = (localStorage.getItem('user'));
+    const tkn = userlocal.token
     console.log(tkn)
 
     useEffect(() => {

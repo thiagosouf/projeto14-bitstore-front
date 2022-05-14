@@ -6,29 +6,33 @@ import styled from "styled-components";
 import UserContext from "../../contexts/UserContext";
 
 export default function CartPage() {
-  const { user } = useContext(UserContext);
-  console.log(user);
 
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
-  const config = {
-    headers: {
-      Authorization: `Bearer ${user.token}`,
-    },
-  };
+  
   useEffect(() => {
-    const promise = axios.get("http://localhost:5000/cart",config);
-    promise.then((response) => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      };
+      const promise = axios.get("http://localhost:5000/cart", config);
+      promise.then((response) => {
         console.log(response);
-      setCart(response.data);
-    });
+        setCart(response.data);
+      });
+    } else {
+      // ir para login(aparecer pop-up)
+      //
+      navigate("/login");
+    }
   }, []);
-
-
+// carrinho vazio
   return (
-     <>
-     <h1>asdasasdasdsdasad</h1>
-     </>
+    <>
+      <h1>asdasasdasdsdasad</h1>
+    </>
   );
 }
-
