@@ -5,7 +5,7 @@ import GlobalStyles from "./../components/GlobalStyles";
 import CartPage from "./pages/CartPage";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
-
+import HeaderCreator from "./utilities/Header";
 import Product from "./pages/ProductPage";
 
 import CheckOut from "./pages/CheckOut";
@@ -20,8 +20,10 @@ export default function App(){
     const [cart, setCart] = useState([]);
     return(
         <UserContext.Provider value={{ user, setUser, address, setAddress }}>
-            <BrowserRouter>
-                <GlobalStyles />
+             <GlobalStyles />
+             <BrowserRouter>
+               <HeaderCreator/>
+
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<LoginPage />} />

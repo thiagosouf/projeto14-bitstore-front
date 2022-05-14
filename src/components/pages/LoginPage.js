@@ -38,7 +38,7 @@ export default function SignUpPage() {
             localStorage.setItem('usuarioLocal', JSON.stringify(dados));
             
             alert('Login realizado com sucesso!');
-            navigate('/checkout');
+            navigate('/');
         }
         ).catch(err => {
             alert('Erro ao realizar o login');
