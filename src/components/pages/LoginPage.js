@@ -3,9 +3,20 @@ import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import styled from "styled-components"
 
-import UserContext from '../../contexts/UserContext';
+import {UserContext} from '../../contexts/UserContext';
  
 export default function SignUpPage() {
+
+    const localUser = localStorage.getItem("usuariolocal")
+    if(localUser){
+        
+    }
+
+
+
+
+
+
     const navigate = useNavigate();
     const [nome, setNome] = useState('');
     const [cpf, setCpf] = useState('');
@@ -34,8 +45,8 @@ export default function SignUpPage() {
             const { token, name } = res.data;
             console.log(res.data);
             setUser({ token, name });
-            const dados = JSON.stringify({ token});
-            localStorage.setItem('usuarioLocal', JSON.stringify(dados));
+            const dados = JSON.stringify({ token,name});
+            localStorage.setItem('user', JSON.stringify(dados));
             
             alert('Login realizado com sucesso!');
             navigate('/');

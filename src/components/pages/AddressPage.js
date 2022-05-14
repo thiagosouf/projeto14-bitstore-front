@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import styled from "styled-components"
 
-import UserContext from '../../contexts/UserContext';
+import {UserContext} from '../../contexts/UserContext';
 
 export default function AddressPage() {
     const navigate = useNavigate();

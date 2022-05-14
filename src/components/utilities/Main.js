@@ -15,7 +15,6 @@ const Main = styled.main`
         height: 200px;
         display: flex;
         align-items: center;
-        overflow-x: hidden;
       }
       img{
           height: 100px;
