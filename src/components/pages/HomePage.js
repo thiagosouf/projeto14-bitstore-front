@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import UserContext from "../../contexts/UserContext";
 import CreateProduct from "../utilities/CreateProduct";
-
+import Main from "../utilities/Main";
 export default function HomePage() {
   const { user } = useContext(UserContext);
   console.log(user);
@@ -25,7 +25,6 @@ export default function HomePage() {
   if (products.length > 0) {
     return (
       <>
-      <Link to="/login">ir para login</Link>
         <Main>
           <ul>
             {products.map((item, index) => (
@@ -40,9 +39,5 @@ export default function HomePage() {
   }
 }
 
-const Main = styled.main`
-  ul {
-    background-color: aqua;
-  }
-`;
+  
 
