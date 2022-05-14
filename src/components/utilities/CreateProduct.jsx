@@ -22,7 +22,7 @@ export default function CreateProduct({ item, index }) {
         <img src={item.image} alt="" />
         <div className="description">
           <h1>{item.name}</h1>
-          <h2>{item.price}</h2>
+          <h2>R$ {item.price}</h2>
         </div>
       </li>
     </Link>

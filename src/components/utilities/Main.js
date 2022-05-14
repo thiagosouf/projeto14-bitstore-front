@@ -26,11 +26,11 @@ const Main = styled.main`
       }
       h1{
          font-size: 15px;
-         max-height: 50px;
-        text-overflow: unset;
+         margin-bottom: 15PX;
       }
       h2{
-          font-size: 15px;
+        color:#25962b;
+        font-size: 25px;
       }
       h3{
 
