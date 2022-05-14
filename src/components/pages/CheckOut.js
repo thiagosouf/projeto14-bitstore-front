@@ -16,7 +16,7 @@ export default function CheckOut() {
     const [cupomValue, setCupomValue] = useState(true);
 
 
-    const userlocal = (localStorage.getItem('user'));
+    const userlocal = JSON.parse(localStorage.getItem('user'));
     const tkn = userlocal.token
     console.log(tkn)
 

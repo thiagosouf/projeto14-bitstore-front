@@ -15,8 +15,8 @@ import { MdAccountCircle } from "react-icons/md";
 
 export default function HeaderCreator() {
 
-  const user = localStorage.getItem("user");
-
+const user = JSON.parse(localStorage.getItem("user"));
+console.log(user);
 
 
   console.log(user);
@@ -57,7 +57,7 @@ export default function HeaderCreator() {
 }
 
 const Header = styled.header`
-  background-color: aquamarine;
+  background-color: #184ea5;
   position: fixed;
   top: 0;
   left: 0;
@@ -67,6 +67,7 @@ const Header = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 0 10px 0 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   img {
     height: 50px;
   }
