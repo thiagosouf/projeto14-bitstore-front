@@ -17,6 +17,7 @@ import UserContext from "../contexts/UserContext";
 export default function App(){
     const [user, setUser] = useState(null);
     const [address, setAddress] = useState(null);
+    const [cart, setCart] = useState([]);
     return(
         <UserContext.Provider value={{ user, setUser, address, setAddress }}>
              <GlobalStyles />
