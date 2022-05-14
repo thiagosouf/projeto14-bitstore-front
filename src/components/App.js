@@ -19,8 +19,9 @@ export default function App(){
     // const [address, setAddress] = useState(null);
     // const [cart, setCart] = useState([]);
     return(
-        // <UserContext.Provider value={{ user, setUser, address, setAddress }}>
+
         <AuthProvider>
+
              <GlobalStyles />
              <BrowserRouter>
                <HeaderCreator/>

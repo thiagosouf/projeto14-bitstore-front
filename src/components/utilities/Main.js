@@ -26,6 +26,7 @@ const Main = styled.main`
       }
       h1{
          font-size: 15px;
+
          margin-bottom: 15PX;
       }
       h2{

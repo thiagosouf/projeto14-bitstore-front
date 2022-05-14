@@ -2,7 +2,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useContext } from "react";
 
+
 import { UserContext } from "../../contexts/UserContext";
+
+
+
 
 import logo from "../../assets/logo.png";
 import { GoThreeBars } from "react-icons/go";
@@ -10,7 +14,11 @@ import { FaShoppingCart } from "react-icons/fa";
 import { MdAccountCircle } from "react-icons/md";
 
 export default function HeaderCreator() {
+
   const user = localStorage.getItem("user");
+
+
+
   console.log(user);
 
   if (user) {
@@ -32,9 +40,11 @@ export default function HeaderCreator() {
     return (
       <Header>
         <GoThreeBars />
+
         <Link to={"/"}>
           <img src={logo} alt="" />
         </Link>
+
         <div className="options">
           <Link to={"/login"}>
             <MdAccountCircle />
@@ -75,7 +85,9 @@ const Header = styled.header`
     align-items: center;
     text-align: center;
     line-height: 25px;
+
     font-weight: 400;
+
     p {
       padding-left: 3px;
     }
