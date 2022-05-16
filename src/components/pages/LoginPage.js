@@ -106,10 +106,11 @@ export default function SignUpPage() {
                     </Formulario>
                 </FormCadastro>
                 :
-                <FormCadastro onClick={() => setSelecionarCadastro(true)}><h1>FAZER CADASTRO</h1></FormCadastro>
+                <FormCadastro onClick={() => {setSelecionarCadastro(true); setSelecionarLogin(false)}}>
+                <h1>FAZER CADASTRO</h1></FormCadastro>
                     }
 
-                
+                <hr width="50%"></hr>
                     
                     {(selecionarLogin)? 
                         <FormLogin>
@@ -122,7 +123,8 @@ export default function SignUpPage() {
                             </Formulario>
                         </FormLogin>
                         : 
-                        <FormLogin onClick={() => setSelecionarLogin(true)}><h1>JA É CADASTRADO?</h1></FormLogin>
+                        <FormLogin onClick={() => {setSelecionarLogin(true); setSelecionarCadastro(false)}}>
+                            <h1>JA É CADASTRADO?</h1></FormLogin>
                         }
                 
                 
@@ -163,12 +165,13 @@ const FormCadastro = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 15px;
     width: 100vw;
-    background-color: green;
+    /* background-color: green; */
     padding: 5px;
     h1{
         font-size: 20px;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
     }
 `
 
@@ -178,7 +181,7 @@ const FormLogin = styled.div`
     justify-content: flex-start;
     align-items: center;
     width: 100vw;
-    background-color: green;
+    /* background-color: green; */
     margin-top: 15px;
     padding: 5px;
     h1{
@@ -200,6 +203,7 @@ const Formulario = styled.form`
     button{
         font-size: 20px;
         font-weight: 700;
-        width: 100%;}
+        width: 100%;
+        background-color: #a0d6ef;}
 
 `
