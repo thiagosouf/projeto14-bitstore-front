@@ -11,12 +11,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { MdAccountCircle } from "react-icons/md";
 
 export default function HeaderCreator() {
- 
   const user = JSON.parse(localStorage.getItem("user"));
- 
-
-
-
 
   if (user) {
     return (
@@ -83,14 +78,14 @@ const Header = styled.header`
     align-items: center;
     text-align: center;
     line-height: 25px;
-position: relative;
+    position: relative;
     font-weight: 400;
 
     p {
       padding-left: 3px;
     }
   }
-  span{
+  span {
     position: absolute;
     bottom: 10px;
     right: 8px;

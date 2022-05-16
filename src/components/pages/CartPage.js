@@ -49,7 +49,7 @@ export default function CartPage() {
           </ul>
           <div className="total">
               <h5>Total</h5>
-              <h6>R${total.toString().replace(".",",")}</h6>
+              <h6>R$ {total.toString().replace(".",",")}</h6>
           </div>
         </section>
         <button onClick={()=>navigate("/checkout")} className="checkout-button">Pagamento</button>
