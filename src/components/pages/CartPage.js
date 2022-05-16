@@ -1,10 +1,9 @@
-import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 
 import CartProduct from "../utilities/cartProduct";
-import UserContext from "../../contexts/UserContext";
 
 import { FaShoppingCart } from "react-icons/fa";
 
@@ -23,7 +22,6 @@ export default function CartPage() {
       };
       const promise = axios.get("http://localhost:5000/cart", config);
       promise.then((response) => {
-        console.log(response);
         let priceTotal = 0;
         response.data.map((item) => {
           let price = item.qty * parseFloat(item.price.replace(",", "."));

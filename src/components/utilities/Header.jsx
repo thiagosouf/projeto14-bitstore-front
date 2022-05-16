@@ -1,12 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useContext, useState, useEffect } from "react";
-import axios from "axios";
-
-import { UserContext } from "../../contexts/UserContext";
 
 import logo from "../../assets/logo.png";
-import { GoThreeBars } from "react-icons/go";
 import { FaShoppingCart } from "react-icons/fa";
 import { MdAccountCircle } from "react-icons/md";
 import{CgLogOut} from "react-icons/cg"
@@ -17,8 +12,6 @@ function logout() {
   localStorage.removeItem("user")
   navigate("/")
 }
-
-
 
   if (user) {
     return (

@@ -1,28 +1,24 @@
-import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import { MdAddShoppingCart } from "react-icons/md";
 
-import { UserContext } from "../../contexts/UserContext";
 
 export default function Product() {
   const [product, setProduct] = useState([]);
   const navigate = useNavigate();
   const id = useParams().id;
-  console.log(id);
   
   useEffect(() => {
     const promise = axios.get(`http://localhost:5000/product/${id}`);
     promise.then((response) => {
-      console.log(response);
       setProduct({ ...response.data, plus: true });
     });
   }, []);
 
   function addToCart(id) {
     const user = JSON.parse(localStorage.getItem("user"));
-    console.log(user);
 
     if (user) {
       const config = {
@@ -33,7 +29,6 @@ export default function Product() {
 
       const promise = axios.post(`http://localhost:5000/cart`, product, config);
       promise.then((response) => {
-        console.log(response);
         navigate("/cart")
       });
     } else {

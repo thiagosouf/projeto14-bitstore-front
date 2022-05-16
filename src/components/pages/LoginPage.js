@@ -18,10 +18,8 @@ export default function SignUpPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [emaillogin, setEmailLogin] = useState("");
   const [passwordlogin, setPasswordLogin] = useState("");
-  const [selecionarLogin, setSelecionarLogin] = useState(false);
-  const [selecionarCadastro, setSelecionarCadastro] = useState(false);
 
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   function login(event) {
     event.preventDefault();
@@ -34,7 +32,6 @@ export default function SignUpPage() {
     requisicao
       .then((res) => {
         const { token, name } = res.data;
-        console.log(res.data);
         setUser({ token, name });
         const dados = JSON.stringify({ token, name });
         localStorage.setItem("user", dados);

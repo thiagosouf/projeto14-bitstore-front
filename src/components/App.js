@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState} from "react";
 import GlobalStyles from "./../components/GlobalStyles";
 
 import CartPage from "./pages/CartPage";
@@ -12,12 +11,7 @@ import CheckOut from "./pages/CheckOut";
 import AddressPage from "./pages/AddressPage";
 import AuthProvider from "../contexts/UserContext";
 
-import UserContext from "../contexts/UserContext";
-
 export default function App(){
-    // const [user, setUser] = useState(null);
-    // const [address, setAddress] = useState(null);
-    // const [cart, setCart] = useState([]);
     return(
 
         <AuthProvider>
