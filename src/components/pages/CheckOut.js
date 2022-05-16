@@ -87,39 +87,6 @@ export default function CheckOut() {
     }
   }
 
-  //carrinho falso
-  // useEffect(() => {
-  //   setCart([
-  //     {
-  //       id: 1,
-  //       name: "RTX 3090",
-  //       description: "Placa de video",
-  //       price: "35000.00",
-  //       image:
-  //         "https://a-static.mlcdn.com.br/618x463/placa-de-video-asus-geforce-rtx-3090-24gb-gddr6x-384-bits-rog-strix-gaming/magazineluiza/230472200/65b795e36daa4fd8df679cae018c1c0a.jpg",
-  //       qty: 1,
-  //     },
-  //     {
-  //       id: 2,
-  //       name: "Hd 10 TB",
-  //       description: "HD",
-  //       price: "2000.00",
-  //       image:
-  //         "https://a-static.mlcdn.com.br/618x463/hd-interno-seagate-exos-x16-10tb-nas-sata-6gb-7200rpm-256mb-3-5-512e-4kn-st10000nm001g/gigantec/19017/06b3f6e88e4e2f91a3a1e577efd8a935.jpg",
-  //       qty: 2,
-  //     },
-  //     {
-  //       id: 3,
-  //       name: "Memoria Ram",
-  //       description: "Memoria DDR4 16GB",
-  //       price: "400",
-  //       image:
-  //         "https://a-static.mlcdn.com.br/1500x1500/memoria-kingston-fury-impact-16gb-2666mhz-ddr4-cl15-para-notebook-kf426s15ib1-16/kabum/172295/e4297d8aa0e030de62084530b1dd9022.jpg",
-  //       qty: 2,
-  //     },
-  //   ]);
-  // }, []);
-
   useEffect(() => {
     let total = 0;
     cart.map((item) => {
