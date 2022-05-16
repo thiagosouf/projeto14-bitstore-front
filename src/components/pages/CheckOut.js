@@ -195,6 +195,9 @@ export default function CheckOut() {
           </button>
         </Link>
       </Valor>
+
+
+          
     </TeladeCheckout>
   );
 }
