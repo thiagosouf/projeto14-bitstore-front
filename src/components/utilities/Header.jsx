@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useContext, useState, useEffect } from "react";
 import axios from "axios";
@@ -9,14 +9,21 @@ import logo from "../../assets/logo.png";
 import { GoThreeBars } from "react-icons/go";
 import { FaShoppingCart } from "react-icons/fa";
 import { MdAccountCircle } from "react-icons/md";
-
+import{CgLogOut} from "react-icons/cg"
 export default function HeaderCreator() {
   const user = JSON.parse(localStorage.getItem("user"));
+const navigate = useNavigate()
+function logout() {
+  localStorage.removeItem("user")
+  navigate("/")
+}
+
+
 
   if (user) {
     return (
       <Header>
-        <GoThreeBars />
+        <CgLogOut onClick={logout}/>
         <Link to={"/"}>
           <img src={logo} alt="" />
         </Link>
@@ -31,7 +38,6 @@ export default function HeaderCreator() {
   } else {
     return (
       <Header>
-        <GoThreeBars />
 
         <Link to={"/"}>
           <img src={logo} alt="" />
@@ -64,11 +70,11 @@ const Header = styled.header`
     height: 50px;
   }
   svg {
-    font-size: 35px;
+    font-size: 40px;
   }
   .options {
     svg {
-      font-size: 30px;
+      font-size: 40px;
     }
   }
   a {
@@ -83,6 +89,7 @@ const Header = styled.header`
 
     p {
       padding-left: 3px;
+      font-weight: 700;
     }
   }
   span {

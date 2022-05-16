@@ -37,7 +37,7 @@ export default function Product() {
         navigate("/cart")
       });
     } else {
-      // ir para login(aparecer pop-up)
+      alert("Você precisa estar logado!")
       navigate("/login");
     }
   }
