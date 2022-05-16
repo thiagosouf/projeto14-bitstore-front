@@ -12,9 +12,10 @@ const Main = styled.main`
       li{
         border: 1px solid rgb(230, 230, 230);
         padding: 15px;
-        height: 200px;
+        height: 140px;
         display: flex;
         align-items: center;
+        padding: 10px;
       }
       img{
           height: 100px;
@@ -26,18 +27,21 @@ const Main = styled.main`
       }
       h1{
          font-size: 15px;
-         margin-bottom: 15PX;
+         margin-bottom: 15px;
       }
       h2{
         color:#25962b;
         font-size: 25px;
+        span{
+          font-size: 15px;
+          font-weight: 400;
+        }
       }
       h3{
 
       }
       .description{
           width: 275px;
-          height:170px;
           padding: 15px;
       }
   }

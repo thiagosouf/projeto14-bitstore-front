@@ -5,6 +5,8 @@ import styled from "styled-components";
 
 import {UserContext} from "../../contexts/UserContext";
 
+import { MdAddShoppingCart } from "react-icons/md";
+
 export default function CreateProduct({ item, index }) {
 
   //   const [products, setProducts] = useState([]);
@@ -15,14 +17,14 @@ export default function CreateProduct({ item, index }) {
   //       setProducts(response.data);
   //     });
   //   }, []);
-
+ 
   return (
     <Link to={`/product/${item._id}`}>
       <li key={index}>
         <img src={item.image} alt="" />
         <div className="description">
           <h1>{item.name}</h1>
-          <h2>R$ {item.price}</h2>
+          <h2>R$ {item.price}<span> à vista no PIX</span></h2>
         </div>
       </li>
     </Link>
