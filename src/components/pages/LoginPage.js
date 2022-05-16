@@ -41,6 +41,7 @@ export default function SignUpPage() {
 
         alert("Login realizado com sucesso!");
         navigate("/");
+        window.location.reload();
       })
       .catch((err) => {
         alert("Erro ao realizar o login");

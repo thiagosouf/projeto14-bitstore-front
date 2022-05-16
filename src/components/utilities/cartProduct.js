@@ -8,7 +8,29 @@ import { FaTrash } from "react-icons/fa";
 
 export default function CartProduct({ item, index }) {
   const [qty, setQty] = useState(item.qty);
-  
+  const navigate = useNavigate()
+  function editCart(e,item, qty){
+    e.preventDefault()
+    const user = JSON.parse(localStorage.getItem("user"));
+    console.log(user);
+
+    if (user) {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      };
+      item.newQty = qty*1
+      const promise = axios.post(`http://localhost:5000/cart`, item, config);
+      promise.then((response) => {
+        console.log(response);
+        window.location.reload();
+      });
+    } else {
+      // ir para login(aparecer pop-up)
+      navigate("/login");
+    }
+  }
 
 
   return (
@@ -21,7 +43,7 @@ export default function CartProduct({ item, index }) {
         </div>
       </div>
       <div className="edit-product">
-        <form >
+        <form onSubmit={(e)=>editCart(e,item,qty)}>
           <input
             type="number"
             value={qty}
