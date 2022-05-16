@@ -20,7 +20,7 @@ export default function CartPage() {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const promise = axios.get("http://localhost:5000/cart", config);
+      const promise = axios.get("https://project14-bitstore.herokuapp.com/cart", config);
       promise.then((response) => {
         let priceTotal = 0;
         response.data.map((item) => {

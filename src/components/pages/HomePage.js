@@ -7,7 +7,7 @@ export default function HomePage() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const promise = axios.get("http://localhost:5000/products");
+    const promise = axios.get("https://project14-bitstore.herokuapp.com/products");
     promise.then((response) => {
       setProducts(response.data);
     });

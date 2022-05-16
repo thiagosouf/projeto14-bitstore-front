@@ -11,7 +11,7 @@ export default function Product() {
   const id = useParams().id;
   
   useEffect(() => {
-    const promise = axios.get(`http://localhost:5000/product/${id}`);
+    const promise = axios.get(`https://project14-bitstore.herokuapp.com/product/${id}`);
     promise.then((response) => {
       setProduct({ ...response.data, plus: true });
     });
@@ -27,7 +27,7 @@ export default function Product() {
         },
       };
 
-      const promise = axios.post(`http://localhost:5000/cart`, product, config);
+      const promise = axios.post(`https://project14-bitstore.herokuapp.com/cart`, product, config);
       promise.then((response) => {
         navigate("/cart")
       });

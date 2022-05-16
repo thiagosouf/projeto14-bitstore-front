@@ -18,7 +18,7 @@ export default function CartProduct({ item, index }) {
         },
       };
       item.newQty = qty * 1
-      const promise = axios.post(`http://localhost:5000/cart`, item, config);
+      const promise = axios.post(`https://project14-bitstore.herokuapp.com/cart`, item, config);
       promise.then((response) => {
         window.location.reload();
       });
@@ -35,7 +35,7 @@ export default function CartProduct({ item, index }) {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const promise = axios.put(`http://localhost:5000/cart`, { id }, config);
+      const promise = axios.put(`https://project14-bitstore.herokuapp.com/cart`, { id }, config);
       promise.then((response) => {
         window.location.reload();
       });

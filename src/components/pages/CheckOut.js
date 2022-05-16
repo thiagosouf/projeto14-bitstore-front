@@ -20,7 +20,7 @@ export default function CheckOut() {
 
   useEffect(() => {
     if (user) {
-      const requisicao = axios.get("http://localhost:5000/signin", {
+      const requisicao = axios.get("https://project14-bitstore.herokuapp.com/signin", {
         headers: {
           Authorization: `${user.token}`,
         },
@@ -36,7 +36,7 @@ export default function CheckOut() {
   }, [user]);
 
   useEffect(() => {
-    const requisicao = axios.get("http://localhost:5000/address", {
+    const requisicao = axios.get("https://project14-bitstore.herokuapp.com/address", {
       headers: {
         Authorization: `${user.token}`,
       },
@@ -51,7 +51,7 @@ export default function CheckOut() {
   }, []);
 
   useEffect(() => {
-    const requisicao = axios.get("http://localhost:5000/cart", {
+    const requisicao = axios.get("https://project14-bitstore.herokuapp.com/cart", {
       headers: {
         Authorization: `${user.token}`,
       },

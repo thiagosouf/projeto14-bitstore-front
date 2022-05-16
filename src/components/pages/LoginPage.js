@@ -24,7 +24,7 @@ export default function SignUpPage() {
   function login(event) {
     event.preventDefault();
 
-    const requisicao = axios.post("http://localhost:5000/login", {
+    const requisicao = axios.post("https://project14-bitstore.herokuapp.com/login", {
       email: emaillogin,
       password: passwordlogin,
     });
@@ -53,7 +53,7 @@ export default function SignUpPage() {
       return;
     }
 
-    const requisicao = axios.post("http://localhost:5000/signup", {
+    const requisicao = axios.post("https://project14-bitstore.herokuapp.com/signup", {
       name: nome,
       cpf: cpf,
       email: email,

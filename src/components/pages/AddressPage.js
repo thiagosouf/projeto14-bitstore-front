@@ -18,7 +18,7 @@ export default function AddressPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const requisicao = axios.post('http://localhost:5000/address', {
+        const requisicao = axios.post('https://project14-bitstore.herokuapp.com/address', {
             cep,
             endereco,
             numero,
