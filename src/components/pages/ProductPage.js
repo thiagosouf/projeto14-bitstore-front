@@ -79,9 +79,6 @@ const Main = styled.main`
     background-color: #fff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
-  ul {
-    background-color: aqua;
-  }
   img {
     width: 200px;
     height: 200px;

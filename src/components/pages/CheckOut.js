@@ -7,7 +7,7 @@ import styled from "styled-components"
 import {UserContext} from '../../contexts/UserContext';
 
 export default function CheckOut() {
-    const { user } = useContext(UserContext);
+    const user = JSON.parse(localStorage.getItem("user"));
     const { address, setAddress } = useContext(UserContext);
     const [cart, setCart] = useState([]);
     const [email, setEmail] = useState('');

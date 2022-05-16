@@ -10,7 +10,7 @@ const Main = styled.main`
       margin-top: 20px;
    
       li{
-        border-bottom: 1px solid ;
+        border: 1px solid rgb(230, 230, 230);
         padding: 15px;
         height: 200px;
         display: flex;
