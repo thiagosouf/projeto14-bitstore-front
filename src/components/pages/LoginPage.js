@@ -55,6 +55,7 @@ export default function SignUpPage() {
       alert("As senhas não conferem");
       return;
     }
+
     const requisicao = axios.post("http://localhost:5000/signup", {
       name: nome,
       cpf: cpf,
@@ -138,6 +139,7 @@ export default function SignUpPage() {
   );
 }
 
+
 const TeladeLogin = styled.div`
   margin: 100px 5% 20px 5%;
 
@@ -161,6 +163,7 @@ const Formularios = styled.div`
   height: 100%;
 `;
 const FormCadastro = styled.div`
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -217,3 +220,4 @@ const Formulario = styled.form`
     font-weight: 700;
   }
 `;
+

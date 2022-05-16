@@ -77,17 +77,20 @@ export default function AddressPage() {
     button{
         font-size: 20px;
         font-weight: 700;
-        width: 100%;}
+        width: 100%;
+        background-color: #a0d6ef
+    }
 
 `
 
 const FormCadastro = styled.div`
+    margin-top: 90px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100vw;
-    background-color: green;
+    /* background-color: green; */
     padding: 5px;
     h1{
         font-size: 20px;
