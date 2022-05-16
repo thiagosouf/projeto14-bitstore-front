@@ -10,6 +10,9 @@ export default function CartProduct({ item, index }) {
   const [qty, setQty] = useState(item.qty);
   const navigate = useNavigate()
 
+  
+
+
   function editCart(e,item, qty){
     e.preventDefault()
     const user = JSON.parse(localStorage.getItem("user"));
@@ -49,7 +52,7 @@ export default function CartProduct({ item, index }) {
         window.location.reload();
       });
     } else {
-      // ir para login(aparecer pop-up)
+
       navigate("/login");
     }
 
