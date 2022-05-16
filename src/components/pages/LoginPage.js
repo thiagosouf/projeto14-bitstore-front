@@ -203,6 +203,7 @@ const Formulario = styled.form`
     button{
         font-size: 20px;
         font-weight: 700;
-        width: 100%;}
+        width: 100%;
+        background-color: #a0d6ef;}
 
 `

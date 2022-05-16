@@ -75,7 +75,8 @@ export default function CheckOut() {
     event.preventDefault();
     if (cupomValue === true) {
       if (cupom === "cupom") {
-        setTotal(total - total * 0.1);
+        total = total - (total * 0.1);
+        setTotal(parseFloat(total.toFixed(2)));
         alert("Cupom de desconto aplicado com sucesso!");
         setCupomValue(false);
       } else {
