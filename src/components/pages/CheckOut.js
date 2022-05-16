@@ -17,11 +17,8 @@ export default function CheckOut() {
 
   const userlocal = JSON.parse(localStorage.getItem("user"));
   const tkn = userlocal.token;
-  console.log(tkn);
 
   useEffect(() => {
-    console.log("user do context =");
-    console.log(user);
     if (user) {
       const requisicao = axios.get("http://localhost:5000/signin", {
         headers: {
@@ -30,7 +27,6 @@ export default function CheckOut() {
       });
       requisicao
         .then((res) => {
-          console.log(res.data);
           setEmail(res.data.email);
         })
         .catch((err) => {
@@ -47,7 +43,6 @@ export default function CheckOut() {
     });
     requisicao
       .then((res) => {
-        console.log(res.data);
         setAddress(res.data);
       })
       .catch((err) => {
@@ -63,7 +58,6 @@ export default function CheckOut() {
     });
     requisicao
       .then((res) => {
-        console.log(res.data);
         setCart(res.data);
       })
       .catch((err) => {
@@ -75,8 +69,8 @@ export default function CheckOut() {
     event.preventDefault();
     if (cupomValue === true) {
       if (cupom === "cupom") {
-        total = total - (total * 0.1);
-        setTotal(parseFloat(total.toFixed(2)));
+        let vtotal = total - (total * 0.1);
+        setTotal(parseFloat(vtotal.toFixed(2)));
         alert("Cupom de desconto aplicado com sucesso!");
         setCupomValue(false);
       } else {
@@ -170,7 +164,6 @@ export default function CheckOut() {
         </Link>
       )}
 
-      {/* <Frete></Frete> */}
       <hr width="50%"></hr>
       <Titulo>
         <p>Cupom de Desconto</p>
@@ -307,8 +300,6 @@ const Titulo = styled.div`
   font-size: 20px;
   font-weight: 700;
 `;
-
-// const Frete = styled.div``
 
 const Cupom = styled.div`
   display: flex;

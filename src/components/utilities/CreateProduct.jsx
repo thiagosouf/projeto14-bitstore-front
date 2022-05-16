@@ -1,22 +1,6 @@
-import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import styled from "styled-components";
-
-import {UserContext} from "../../contexts/UserContext";
-
-import { MdAddShoppingCart } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 export default function CreateProduct({ item, index }) {
-
-  //   const [products, setProducts] = useState([]);
-  //   const navigate = useNavigate();
-  //   useEffect(() => {
-  //     const promise = axios.get("http://localhost:5000/products");
-  //     promise.then((response) => {
-  //       setProducts(response.data);
-  //     });
-  //   }, []);
  
   return (
     <Link to={`/product/${item._id}`}>
