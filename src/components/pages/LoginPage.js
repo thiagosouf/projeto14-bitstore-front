@@ -1,209 +1,223 @@
-import {useState, useContext} from 'react';
-import {useNavigate} from 'react-router-dom';
-import axios from 'axios';
-import styled from "styled-components"
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import styled from "styled-components";
 
-import {UserContext} from '../../contexts/UserContext';
- 
+import { UserContext } from "../../contexts/UserContext";
+
 export default function SignUpPage() {
+  const localUser = JSON.parse(localStorage.getItem("usuariolocal"));
+  if (localUser) {
+  }
 
-    const localUser =JSON.parse(localStorage.getItem("usuariolocal"))
-    if(localUser){
-        
+  const navigate = useNavigate();
+  const [nome, setNome] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [emaillogin, setEmailLogin] = useState("");
+  const [passwordlogin, setPasswordLogin] = useState("");
+  const [selecionarLogin, setSelecionarLogin] = useState(false);
+  const [selecionarCadastro, setSelecionarCadastro] = useState(false);
+
+  const { user, setUser } = useContext(UserContext);
+
+  function login(event) {
+    event.preventDefault();
+
+    const requisicao = axios.post("http://localhost:5000/login", {
+      email: emaillogin,
+      password: passwordlogin,
+    });
+
+    requisicao
+      .then((res) => {
+        const { token, name } = res.data;
+        console.log(res.data);
+        setUser({ token, name });
+        const dados = JSON.stringify({ token, name });
+        localStorage.setItem("user", dados);
+
+        alert("Login realizado com sucesso!");
+        navigate("/");
+        window.location.reload();
+      })
+      .catch((err) => {
+        alert("Erro ao realizar o login");
+        console.log(err);
+      });
+  }
+
+  function fazerCadastro(event) {
+    event.preventDefault();
+    if (password !== confirmPassword) {
+      alert("As senhas não conferem");
+      return;
     }
 
+    const requisicao = axios.post("http://localhost:5000/signup", {
+      name: nome,
+      cpf: cpf,
+      email: email,
+      password: password,
+    });
+    requisicao.then((res) => {
+      alert("Cadastro realizado com sucesso");
 
+      navigate("/login");
+    });
 
+    requisicao.catch((err) => {
+      alert("Erro ao realizar o cadastro");
+      console.log(err);
+    });
+  }
 
+  return (
+    <TeladeLogin>
+      <section>
+        <Formularios>
+          <FormCadastro>
+            <h1>QUERO ME CADASTRAR</h1>
+            <Formulario onSubmit={fazerCadastro}>
+              <input
+                type="text"
+                placeholder="Nome"
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+              />
+              <input
+                type="number"
+                placeholder="CPF"
+                value={cpf}
+                onChange={(e) => setCpf(e.target.value)}
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Senha"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Confirmar senha"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              <button type="submit">Cadastrar</button>
+            </Formulario>
+          </FormCadastro>
 
+          <FormLogin>
+            <h1>FAZER LOGIN</h1>
+            <Formulario onSubmit={login}>
+              <input
+                type="email"
+                placeholder="E-mail"
+                value={emaillogin}
+                onChange={(e) => setEmailLogin(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Senha"
+                value={passwordlogin}
+                onChange={(e) => setPasswordLogin(e.target.value)}
+              />
+              <button type="submit">Entrar</button>
+            </Formulario>
+          </FormLogin>
+        </Formularios>
+      </section>
+    </TeladeLogin>
+  );
+}
 
-    const navigate = useNavigate();
-    const [nome, setNome] = useState('');
-    const [cpf, setCpf] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [emaillogin, setEmailLogin] = useState('');
-    const [passwordlogin, setPasswordLogin] = useState('');
-    const [selecionarLogin, setSelecionarLogin] = useState(false);
-    const [selecionarCadastro, setSelecionarCadastro] = useState(false);
-
-    const {user, setUser} = useContext(UserContext);
-
-    function login(event){
-        event.preventDefault();
-        
-        
-        const requisicao = axios.post('http://localhost:5000/login', {
-            email: emaillogin,
-            password: passwordlogin
-        }); 
-        
-        
-
-        requisicao.then(res => {
-            const { token, name } = res.data;
-            console.log(res.data);
-            setUser({ token, name });
-            const dados = JSON.stringify({ token,name});
-            localStorage.setItem('user', (dados));
-            
-            alert('Login realizado com sucesso!');
-            navigate('/');
-        }
-        ).catch(err => {
-            alert('Erro ao realizar o login');
-            console.log(err);
-        });     
-    }
-
-    function fazerCadastro(event){
-        event.preventDefault();
-        if(password !== confirmPassword){
-            alert('As senhas não conferem');
-            return;
-        }
-        const requisicao = axios.post('http://localhost:5000/signup', {
-            name: nome,
-            cpf: cpf,
-            email: email,
-            password: password
-        });
-        requisicao.then(res => {
-            alert('Cadastro realizado com sucesso');
-
-            navigate('/login');
-
-        });
-
-        requisicao.catch(err => {
-            alert('Erro ao realizar o cadastro');
-            console.log(err);
-        });
-    }
-        
-
-
-
-
-    return(
-        <TeladeLogin>
-            <Identificacao>
-                Identificacao
-            </Identificacao>
-            <Formularios>
-                {selecionarCadastro ?
-                    <FormCadastro>
-                    <h1>QUERO ME CADASTRAR</h1>
-                    <Formulario onSubmit={fazerCadastro}>
-                    
-                        <input type="text" placeholder="Nome" value={nome} onChange={(e) => setNome(e.target.value)} />
-                        <input type="number" placeholder="CPF" value={cpf} onChange={(e) => setCpf(e.target.value)} />
-                        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                        <input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} />
-                        <input type="password" placeholder="Confirmar senha" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                        <button type="submit">Cadastrar</button>
-                    </Formulario>
-                </FormCadastro>
-                :
-                <FormCadastro onClick={() => {setSelecionarCadastro(true); setSelecionarLogin(false)}}>
-                <h1>FAZER CADASTRO</h1></FormCadastro>
-                    }
-
-                <hr width="50%"></hr>
-                    
-                    {(selecionarLogin)? 
-                        <FormLogin>
-                            <h1>FAZER LOGIN</h1>
-                            <Formulario onSubmit={login}>
-                        
-                            <input type="email" placeholder="E-mail" value={emaillogin} onChange={e => setEmailLogin(e.target.value)} />
-                            <input type="password" placeholder="Senha" value={passwordlogin} onChange={e => setPasswordLogin(e.target.value)} />
-                            <button type="submit">Entrar</button>
-                            </Formulario>
-                        </FormLogin>
-                        : 
-                        <FormLogin onClick={() => {setSelecionarLogin(true); setSelecionarCadastro(false)}}>
-                            <h1>JA É CADASTRADO?</h1></FormLogin>
-                        }
-                
-                
-            </Formularios>
-        </TeladeLogin>
-            );
-        }
 
 const TeladeLogin = styled.div`
+  margin: 100px 5% 20px 5%;
+
+  section {
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100vw;
-    background-color: #fafafa;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
 `;
-const Identificacao = styled.div`
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 30px;
-    width: 90%;
-    font-size: 30px;
-    font-weight: bold;
-    color: black;
-`
-const Formularios = styled.div` 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-`
+const Formularios = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
 const FormCadastro = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-    width: 100vw;
-    /* background-color: green; */
-    padding: 5px;
-    h1{
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
-`
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  margin-top: 15px;
+  padding-bottom: 20px;
+  h1 {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+  border-bottom: 1px solid rgb(230, 230, 230);
+`;
 
 const FormLogin = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100vw;
-    /* background-color: green; */
-    margin-top: 15px;
-    padding: 5px;
-    h1{
-        font-size: 20px;
-        margin-bottom: 30px;
-    }
-`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-top: 15px;
+  padding: 5px;
+  padding-bottom: 15px;
+  h1 {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+`;
 
 const Formulario = styled.form`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    input{
-        margin-bottom: 8px;
-        font-size: 20px;
-        width: 100%
-    }
-    button{
-        font-size: 20px;
-        font-weight: 700;
-        width: 100%;
-        background-color: #a0d6ef;}
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  input {
+    margin-bottom: 8px;
+    font-size: 20px;
+    width: 100%;
+    height: 35px;
+    border: 1px solid rgb(230, 230, 230);
+    padding-left: 5px;
+    outline: 0;
+  }
+  button {
+    font-size: 20px;
+    width: 150px;
+    height: 30px;
+    background-color: #a0d6ef;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-weight: 700;
+  }
+`;
 
-`
