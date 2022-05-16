@@ -15,7 +15,7 @@ export default function AddressPage() {
     const [bairro, setBairro] = useState('');
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
-    const {user} = useContext(UserContext);
+    const user = JSON.parse(localStorage.getItem("user"));
     console.log(user)
 
 

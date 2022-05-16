@@ -7,7 +7,7 @@ import {UserContext} from '../../contexts/UserContext';
  
 export default function SignUpPage() {
 
-    const localUser = localStorage.getItem("usuariolocal")
+    const localUser =JSON.parse(localStorage.getItem("usuariolocal"))
     if(localUser){
         
     }
@@ -46,7 +46,7 @@ export default function SignUpPage() {
             console.log(res.data);
             setUser({ token, name });
             const dados = JSON.stringify({ token,name});
-            localStorage.setItem('user', JSON.stringify(dados));
+            localStorage.setItem('user', (dados));
             
             alert('Login realizado com sucesso!');
             navigate('/');

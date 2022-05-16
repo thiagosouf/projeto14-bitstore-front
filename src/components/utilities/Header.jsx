@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useContext } from "react";
-
+import { useContext, useState, useEffect } from "react";
+import axios from "axios";
 
 import { UserContext } from "../../contexts/UserContext";
-
-
-
 
 import logo from "../../assets/logo.png";
 import { GoThreeBars } from "react-icons/go";
@@ -14,12 +11,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { MdAccountCircle } from "react-icons/md";
 
 export default function HeaderCreator() {
-
-  const user = localStorage.getItem("user");
-
-
-
-  console.log(user);
+  const user = JSON.parse(localStorage.getItem("user"));
 
   if (user) {
     return (
@@ -57,7 +49,7 @@ export default function HeaderCreator() {
 }
 
 const Header = styled.header`
-  background-color: aquamarine;
+  background-color: #a0d6ef;
   position: fixed;
   top: 0;
   left: 0;
@@ -67,6 +59,7 @@ const Header = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 0 10px 0 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   img {
     height: 50px;
   }
@@ -85,11 +78,20 @@ const Header = styled.header`
     align-items: center;
     text-align: center;
     line-height: 25px;
-
+    position: relative;
     font-weight: 400;
 
     p {
       padding-left: 3px;
     }
+  }
+  span {
+    position: absolute;
+    bottom: 10px;
+    right: 8px;
+    line-height: 15px;
+    color: #a0d6ef;
+    font-weight: 700;
+    font-size: 14px;
   }
 `;
