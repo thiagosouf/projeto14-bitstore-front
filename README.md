@@ -5,7 +5,7 @@
 <hr>
 <h4 align=center>A computer parts store</h4>
 <h4 align=center>First duo project using branchs  on GitHub</h4>
-<h4 align=center>Check the <a href="https://github.com/thiagosouf/projeto14-bitstore-front">Back-end</a> code</h4>
+<h4 align=center>Check the <a href="https://github.com/DanielCdOliveira/projeto14-bitstore-back">Back-end</a> code</h4>
 <div align=center style="display:flex; justify-content: center; gap:5%">
     <img style = "width:18%;"src="https://i.imgur.com/TfWNi3e.png">
     <img style = "width:18%;"src="https://i.imgur.com/HMJREgB.png">
